@@ -4,12 +4,16 @@ import counter from './counter'
 import todos from "./todos";
 import visibilityFilter from "./visibilityFilter";
 import login from "./login";
+import dialog from './dialog';
+import theme from './theme';
 
 const AppReducer = combineReducers({
     nav,
     counter,
     todos,
     visibilityFilter,
-    login
+    login,
+    dialog,
+    theme
 });
 export default AppReducer;
