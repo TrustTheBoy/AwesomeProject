@@ -3,6 +3,10 @@ package com.awesomeproject;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.cmcewen.blurview.BlurViewPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.microsoft.codepush.react.CodePush;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -15,6 +19,12 @@ import java.util.List;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+        @Override
+        protected String getJSBundleFile() {
+        return CodePush.getJSBundleFile();
+        }
+    
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -24,7 +34,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new VectorIconsPackage()
+            new SplashScreenReactPackage(),
+            new BlurViewPackage(),
+            new LinearGradientPackage(),
+              new CodePush("FblmCRWTrhBTK4pHOxDzOfdqQvs04ksvOXqog", getApplicationContext(), BuildConfig.DEBUG, "http://180.76.138.89:3000"),
+            new VectorIconsPackage(),
+              new ToastReactPackage()
       );
     }
 
